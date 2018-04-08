@@ -22,4 +22,9 @@ private:
 	ATank* GetControlledTank() const;
 
 	ATank* GetPlayerTank() const;
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	void AimTowardPlayer();
 };
