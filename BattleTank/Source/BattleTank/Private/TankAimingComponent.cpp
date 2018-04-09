@@ -37,12 +37,13 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		HitLocation,
 		LaunchSpeed,
 		false,
-		0.f,
-		0.f,
-		ESuggestProjVelocityTraceOption::DoNotTrace
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace,
+		FCollisionResponseParams::DefaultResponseParam
 	);
 
-	if(bHaveAimSolution)
+	if(bHaveAimSolution && HitLocation != FVector(0))
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelToward(AimDirection);

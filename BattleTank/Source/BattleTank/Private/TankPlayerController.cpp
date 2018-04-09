@@ -4,6 +4,7 @@
 #include "GameFramework/PlayerController.h"
 #include "TankAimingComponent.h"
 #include "Engine/World.h"
+#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -39,7 +40,6 @@ void ATankPlayerController::AimTowardCrosshair()
 	if (GetSightRayHitLocation(HitLocation)) // has "side-effect", is going to line trace
 	{
 		GetControlledTank()->AimAt(HitLocation);
-		// TODO: Tell controlled tank to aim at this point
 	}
 
 }
@@ -83,7 +83,6 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
 {
-
 	FVector CameraWorldLocation; // To be discarded
 	return DeprojectScreenPositionToWorld(
 		ScreenLocation.X,
