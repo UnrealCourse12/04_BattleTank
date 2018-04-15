@@ -18,9 +18,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:
+	UFUNCTION(BlueprintCallable, Category = Setup)
 	ATank* GetControlledTank() const;
 
+private:
 	virtual void Tick(float DeltaTime) override;
 
 	// Start the tank moving the barrel so that a shot would hit it
