@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright FLB Games.
 
 #include "TankAimingComponent.h"
 #include "GameFramework/Actor.h"
@@ -7,7 +7,6 @@
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "Engine/World.h"
-
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -19,15 +18,9 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
+void UTankAimingComponent::Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
-	if (!TurretToSet) { return; }
 	Turret = TurretToSet;
 }
 
@@ -61,6 +54,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::MoveBarrelToward(FVector AimDirection)
 {
+	if (!Barrel || !Turret) { return; }
 	// Work out the difference between current barrel rotation and AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
