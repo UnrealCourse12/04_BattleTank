@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright FLB Games.
 
 #pragma once
 
@@ -8,7 +8,11 @@
 
 // Forward Declarations
 class ATank;
+class UTankAimingComponent;
 
+/**
+* Responsible for helping the player aim.
+**/
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
@@ -20,6 +24,11 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	ATank* GetControlledTank() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = Setup)
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
+
+	// Protected, because the place we're going to use this event is in a blueprint that is a subclass of the TankPlayerController
 
 private:
 	virtual void Tick(float DeltaTime) override;
