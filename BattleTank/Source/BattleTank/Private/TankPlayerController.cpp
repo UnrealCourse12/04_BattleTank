@@ -5,7 +5,6 @@
 #include "TankAimingComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Pawn.h"
-#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
