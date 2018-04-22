@@ -27,6 +27,8 @@ protected:
 	// Protected, because the place we're going to use this event is in a blueprint that is a subclass of the TankPlayerController
 
 private:
+	virtual void SetPawn(APawn* InPawn) override;
+
 	virtual void Tick(float DeltaTime) override;
 
 	// Start the tank moving the barrel so that a shot would hit it
@@ -47,4 +49,7 @@ private:
 
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
 };
